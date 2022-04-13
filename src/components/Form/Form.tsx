@@ -2,11 +2,11 @@ import React, { useState } from 'react';
 import { IUser } from '../../modals/modals';
 import "./Form.scss";
 
-interface FormProps {
+// interface FormProps {
 
-}
+// }
 
-export const Form: React.FC<FormProps> = ({}) => {
+export const Form: React.FC = () => {
     const [user, setUser] = useState<IUser>({username: "", password: ""});
     const [isValidUser, setIsValidUser] = useState<boolean>(false)
 
@@ -18,10 +18,10 @@ export const Form: React.FC<FormProps> = ({}) => {
     }
     return (
         <>
-            {isValidUser ? <h1>User is valid</h1> :             <form onSubmit={handleFormSubmit}>
-                <input type="text" placeholder="Username" required onInput={(e: React.ChangeEvent<HTMLInputElement>) => {setUser({...user, username: e.target.value})}} />
-                <input type="password" placeholder="Password" required onInput={(e: React.ChangeEvent<HTMLInputElement>) => {setUser({...user, password: e.target.value})}} />
-                <button type="submit">Login</button>
+            {isValidUser ? <h1 data-cy="success-message">User is valid</h1> :             <form onSubmit={handleFormSubmit}>
+                <input type="text" placeholder="Username" required data-cy="username-input" onInput={(e: React.ChangeEvent<HTMLInputElement>) => {setUser({...user, username: e.target.value})}} />
+                <input type="password" placeholder="Password" required data-cy="password-input" onInput={(e: React.ChangeEvent<HTMLInputElement>) => {setUser({...user, password: e.target.value})}} />
+                <button type="submit" data-cy="submit-btn">Login</button>
             </form>}
         </>
         );
